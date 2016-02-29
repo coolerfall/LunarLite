@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+	compileSdkVersion 23
+	buildToolsVersion "23.0.2"
+
+	defaultConfig {
+		applicationId "com.coolerfall.lunarlite"
+		minSdkVersion 15
+		targetSdkVersion 23
+		versionCode 1
+		versionName "0.1.0"
+	}
+
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles 'proguard-rules.pro'
+		}
+	}
+
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
+}
+
+def libs = [
+		supportLib : '23.1.1',
+		rxjava     : '1.1.0',
+		rxandroid  : '1.1.0',
+		dagger     : '2.0.2',
+		annotation : '10.0-b28',
+		retrofit   : '1.9.0',
+		okhttp     : '2.5.0',
+		butterknife: '7.0.1',
+		greendao   : '2.1.0',
+		timber     : '3.1.0',
+		lunarview  : '1.0.1',
+		robolectric: '3.0'
+]
+
+dependencies {
+	compile fileTree(include: ['*.jar'], dir: 'libs')
+	compile "com.android.support:appcompat-v7:${libs.supportLib}"
+
+	apt "com.google.dagger:dagger-compiler:${libs.dagger}"
+	provided "org.glassfish:javax.annotation:${libs.annotation}"
+
+	compile "com.google.dagger:dagger:${libs.dagger}"
+	compile "io.reactivex:rxjava:${libs.rxjava}"
+	compile "io.reactivex:rxandroid:${libs.rxandroid}"
+	compile "com.squareup.retrofit:retrofit:${libs.retrofit}"
+	compile "com.jakewharton:butterknife:${libs.butterknife}"
+	compile "de.greenrobot:greendao:${libs.greendao}"
+	compile "com.jakewharton.timber:timber:${libs.timber}"
+	compile "com.coolerfall:android-lunar-view:${libs.lunarview}"
+
+	testCompile "org.robolectric:robolectric:${libs.robolectric}"
+}
