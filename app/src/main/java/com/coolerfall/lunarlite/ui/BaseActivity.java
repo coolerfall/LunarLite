@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 
+import com.coolerfall.lunarlite.app.LunarApplication;
+import com.coolerfall.lunarlite.di.component.AppComponent;
+
 import butterknife.ButterKnife;
 
 /**
@@ -25,6 +28,24 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseFrag
 
 		ButterKnife.bind(this);
 		initView();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		getPresenter().resume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		getPresenter().pause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		getPresenter().destroy();
 	}
 
 	@Override
@@ -52,4 +73,20 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseFrag
 	 * Initialize view in inherited activity.
 	 */
 	protected abstract void initView();
+
+	/**
+	 * Get {@link Presenter} to use.
+	 *
+	 * @return {@link Presenter}
+	 */
+	protected abstract Presenter getPresenter();
+
+	/**
+	 * Get {@link AppComponent} in {@link LunarApplication}.
+	 *
+	 * @return {@link AppComponent}
+	 */
+	protected AppComponent getAppComponent() {
+		return ((LunarApplication) getApplication()).getComponent();
+	}
 }

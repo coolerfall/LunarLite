@@ -1,6 +1,7 @@
 package com.coolerfall.lunarlite.di.module;
 
 import android.app.Activity;
+import android.content.Context;
 
 
 import com.coolerfall.lunarlite.di.scope.PerActivity;
@@ -22,9 +23,7 @@ public class ActivityModule {
 		mActivity = activity;
 	}
 
-	@Provides
-	@PerActivity
-	Activity provideActivity() {
+	@Provides @PerActivity Context provideActivityContext() {
 		return mActivity;
 	}
 }

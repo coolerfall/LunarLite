@@ -7,6 +7,8 @@ import com.coolerfall.lunarlite.di.component.AppComponent;
 import com.coolerfall.lunarlite.di.component.DaggerAppComponent;
 import com.coolerfall.lunarlite.di.module.AppModule;
 
+import timber.log.Timber;
+
 /**
  * This is the lunar application through the whole project.
  *
@@ -14,6 +16,7 @@ import com.coolerfall.lunarlite.di.module.AppModule;
  * @since Feb. 20, 2016
  */
 public class LunarApplication extends Application implements HasComponent<AppComponent> {
+	private static final String TAG = "Vtag";
 	private AppComponent mAppComponent;
 
 	@Override
@@ -21,6 +24,10 @@ public class LunarApplication extends Application implements HasComponent<AppCom
 		super.onCreate();
 
 		initInjection();
+
+		/* config timber logger */
+		Timber.plant(new Timber.DebugTree());
+		Timber.tag(TAG);
 	}
 
 	@Override
@@ -28,6 +35,7 @@ public class LunarApplication extends Application implements HasComponent<AppCom
 		return mAppComponent;
 	}
 
+	/* init dependency injection */
 	private void initInjection() {
 		mAppComponent = DaggerAppComponent.builder()
 			.appModule(new AppModule(this))

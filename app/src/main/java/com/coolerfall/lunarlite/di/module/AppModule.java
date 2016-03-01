@@ -25,15 +25,11 @@ public class AppModule {
 		mLunarApplication = lunarApplication;
 	}
 
-	@Provides
-	@Singleton
-	Context provideAppContext() {
+	@Provides @Singleton Context provideAppContext() {
 		return mLunarApplication.getApplicationContext();
 	}
 
-	@Provides
-	@Singleton
-	AlmanacRepository provideAlmanacRepository(AlmanacDataSource dataSource) {
+	@Provides @Singleton AlmanacRepository provideAlmanacRepository(AlmanacDataSource dataSource) {
 		return dataSource;
 	}
 }

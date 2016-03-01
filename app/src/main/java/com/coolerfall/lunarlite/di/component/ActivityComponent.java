@@ -12,8 +12,7 @@ import dagger.Component;
  * @author Vincent Cheung (coolingfall@gmail.com)
  * @since jan. 08, 2016
  */
-@PerActivity
-@Component(dependencies = AppComponent.class, modules = ActivityModule.class)
+@PerActivity @Component(dependencies = AppComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
 
 }
