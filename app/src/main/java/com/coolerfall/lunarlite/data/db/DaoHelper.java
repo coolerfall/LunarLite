@@ -12,7 +12,7 @@ import com.coolerfall.lunarlite.data.db.model.DaoSession;
  * @since Feb. 20, 2016
  */
 public class DaoHelper {
-	private static final String DB_NAME = "almanac.db";
+	public static final String DB_NAME = "almanac.db";
 	private static DaoSession sSession;
 
 	private DaoHelper() {

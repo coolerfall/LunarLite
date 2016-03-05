@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.coolerfall.widget.lunar.LunarView
+            android:id="@+id/lite_lunar_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:todayBackground="@drawable/ic_circle"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_normal"
+            android:background="@color/light_gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_large"
+            android:paddingTop="@dimen/padding_large">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/padding_large"
+                android:paddingStart="@dimen/padding_large"
+                tools:ignore="RtlSymmetry">
+
+                <TextView
+                    android:id="@+id/lite_week_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="1"
+                    android:gravity="center_horizontal"
+                    android:textSize="@dimen/font_normal"/>
+
+                <TextView
+                    android:id="@+id/lite_week_of_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:ems="1"
+                    android:gravity="center_horizontal"
+                    android:textSize="@dimen/font_normal"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0">
+
+                <com.coolerfall.lunarlite.ui.widget.NoPaddingTextView
+                    android:id="@+id/lite_solar_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/text_red"
+                    android:textSize="@dimen/font_grand"/>
+
+                <TextView
+                    android:id="@+id/lite_lunar_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/font_normal"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingEnd="@dimen/padding_large"
+                android:paddingRight="@dimen/padding_large"
+                tools:ignore="RtlSymmetry">
+
+                <TextView
+                    android:id="@+id/lite_cyclical_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="1"
+                    android:gravity="center_horizontal"
+                    android:textSize="@dimen/font_normal"/>
+
+                <TextView
+                    android:id="@+id/lite_cyclical_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:ems="1"
+                    android:gravity="center_horizontal"
+                    android:textSize="@dimen/font_normal"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- almanac -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_normal"
+            android:background="@drawable/almanac_box"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/padding_normal"
+                android:paddingLeft="@dimen/padding_normal"
+                android:paddingRight="@dimen/padding_normal"
+                android:paddingTop="@dimen/padding_normal">
+
+                <TextView
+                    android:id="@+id/lite_tv_suit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_suitable"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:drawableStart="@drawable/ic_suitable"
+                    android:gravity="start|center_vertical"
+                    android:textSize="@dimen/font_smaller"/>
+
+                <TextView
+                    android:id="@+id/lite_tv_dread"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:drawableLeft="@drawable/ic_dread"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:drawableStart="@drawable/ic_dread"
+                    android:gravity="start|center_vertical"
+                    android:textSize="@dimen/font_smaller"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_size"
+                android:background="@color/light_brown"/>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

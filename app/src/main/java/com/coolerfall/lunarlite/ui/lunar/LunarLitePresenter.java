@@ -1,16 +1,10 @@
 package com.coolerfall.lunarlite.ui.lunar;
 
-import android.content.Context;
-
-import com.coolerfall.lunarlite.R;
 import com.coolerfall.lunarlite.di.scope.PerActivity;
 import com.coolerfall.lunarlite.domain.interactor.AlmanacUsecase;
 import com.coolerfall.lunarlite.ui.Presenter;
 import com.coolerfall.lunarlite.ui.View;
-import com.coolerfall.lunarlite.utils.Misc;
 import com.coolerfall.widget.lunar.Lunar;
-
-import java.io.File;
 
 import javax.inject.Inject;
 
@@ -24,22 +18,18 @@ import rx.Subscription;
  */
 @PerActivity
 public class LunarLitePresenter implements Presenter {
-	private static final String DB_NAME = "almanac.db";
-	private Context mContext;
 	private AlmanacUsecase mAlmanacUsecase;
 	private Subscription mAlmanacSubscription;
 	private LunarLiteView mView;
 
 	@Inject
-	public LunarLitePresenter(Context context, AlmanacUsecase almanacUsecase) {
-		mContext = context;
+	public LunarLitePresenter(AlmanacUsecase almanacUsecase) {
 		mAlmanacUsecase = almanacUsecase;
 	}
 
 	@Override
 	public void attach(View view) {
 		mView = (LunarLiteView) view;
-		copyDatabase();
 	}
 
 	@Override
@@ -56,13 +46,6 @@ public class LunarLitePresenter implements Presenter {
 	public void destroy() {
 		if (mAlmanacSubscription != null && mAlmanacSubscription.isUnsubscribed()) {
 			mAlmanacSubscription.unsubscribe();
-		}
-	}
-
-	private void copyDatabase() {
-		File dbFile = mContext.getDatabasePath(DB_NAME);
-		if (!dbFile.exists()) {
-			Misc.copyRawDatabase(mContext, R.raw.almanac, DB_NAME);
 		}
 	}
 
@@ -83,6 +66,6 @@ public class LunarLitePresenter implements Presenter {
 	 */
 	protected void loadAlmanac(int wielding, int heavenlyEarthly) {
 		mAlmanacSubscription = mAlmanacUsecase.getAuspiciousDay(wielding, heavenlyEarthly)
-			.subscribe(mView::bindAlmanac);
+			.filter(almanac -> almanac != null).subscribe(mView::bindAlmanac);
 	}
 }

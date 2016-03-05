@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
  * Base activity of this project, all activity must inherit from this activity.
  *
  * @author Vincent Cheung
- * @since  Aug. 05, 2015
+ * @since Aug. 05, 2015
  */
 public abstract class BaseActivity extends AppCompatActivity implements BaseFragment.OnBackHandler {
 	private BaseFragment mCurrentFtagment;
@@ -46,6 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseFrag
 	protected void onDestroy() {
 		super.onDestroy();
 		getPresenter().destroy();
+		ButterKnife.unbind(this);
 	}
 
 	@Override

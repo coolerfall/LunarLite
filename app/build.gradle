@@ -53,6 +53,7 @@ def libs = [
 		butterknife: '7.0.1',
 		greendao   : '2.1.0',
 		timber     : '3.1.0',
+		phrase     : '1.1.0',
 		lunarview  : '1.0.1',
 		robolectric: '3.0'
 ]
@@ -71,6 +72,7 @@ dependencies {
 	compile "com.jakewharton:butterknife:${libs.butterknife}"
 	compile "de.greenrobot:greendao:${libs.greendao}"
 	compile "com.jakewharton.timber:timber:${libs.timber}"
+	compile "com.squareup.phrase:phrase:${libs.phrase}"
 	compile "com.coolerfall:android-lunar-view:${libs.lunarview}"
 
 	testCompile "org.robolectric:robolectric:${libs.robolectric}"

@@ -24,7 +24,7 @@ public class AlmanacUsecase {
 	}
 
 	/**
-	 * Get an auspicious day from database and observe on {@link AndroidSchedulers#mainThread()}..
+	 * Get an auspicious day from database and observe on {@link AndroidSchedulers#mainThread()}.
 	 *
 	 * @param wielding        wielding
 	 * @param heavenlyEarthly heavenly and earthly
