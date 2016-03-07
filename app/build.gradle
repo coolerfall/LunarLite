@@ -43,7 +43,7 @@ android {
 }
 
 def libs = [
-		supportLib : '23.1.1',
+		supportLib : '23.2.0',
 		rxjava     : '1.1.0',
 		rxandroid  : '1.1.0',
 		dagger     : '2.0.2',
@@ -68,11 +68,10 @@ dependencies {
 	compile "com.google.dagger:dagger:${libs.dagger}"
 	compile "io.reactivex:rxjava:${libs.rxjava}"
 	compile "io.reactivex:rxandroid:${libs.rxandroid}"
-	compile "com.squareup.retrofit:retrofit:${libs.retrofit}"
 	compile "com.jakewharton:butterknife:${libs.butterknife}"
-	compile "de.greenrobot:greendao:${libs.greendao}"
 	compile "com.jakewharton.timber:timber:${libs.timber}"
 	compile "com.squareup.phrase:phrase:${libs.phrase}"
+	compile "de.greenrobot:greendao:${libs.greendao}"
 	compile "com.coolerfall:android-lunar-view:${libs.lunarview}"
 
 	testCompile "org.robolectric:robolectric:${libs.robolectric}"
