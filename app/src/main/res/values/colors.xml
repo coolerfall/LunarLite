@@ -9,5 +9,6 @@
     <color name="light_brown">#d3b77a</color>
 
     <color name="text_red">#ff514e</color>
+    <color name="text_dark_gray">#555050</color>
 
 </resources>

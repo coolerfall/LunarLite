@@ -46,6 +46,7 @@
                     android:layout_height="wrap_content"
                     android:ems="1"
                     android:gravity="center_horizontal"
+                    android:textColor="@color/text_dark_gray"
                     android:textSize="@dimen/font_normal"/>
 
                 <TextView
@@ -55,6 +56,7 @@
                     android:layout_marginTop="@dimen/margin_large"
                     android:ems="1"
                     android:gravity="center_horizontal"
+                    android:textColor="@color/text_dark_gray"
                     android:textSize="@dimen/font_normal"/>
 
             </LinearLayout>
@@ -78,6 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:textColor="@color/text_dark_gray"
                     android:textSize="@dimen/font_normal"/>
 
             </RelativeLayout>
@@ -96,6 +99,7 @@
                     android:layout_height="wrap_content"
                     android:ems="1"
                     android:gravity="center_horizontal"
+                    android:textColor="@color/text_dark_gray"
                     android:textSize="@dimen/font_normal"/>
 
                 <TextView
@@ -105,6 +109,7 @@
                     android:layout_marginTop="@dimen/margin_large"
                     android:ems="1"
                     android:gravity="center_horizontal"
+                    android:textColor="@color/text_dark_gray"
                     android:textSize="@dimen/font_normal"/>
 
             </LinearLayout>
@@ -136,6 +141,7 @@
                     android:drawablePadding="@dimen/padding_small"
                     android:drawableStart="@drawable/ic_suitable"
                     android:gravity="start|center_vertical"
+                    android:textColor="@color/text_dark_gray"
                     android:textSize="@dimen/font_smaller"/>
 
                 <TextView
@@ -147,6 +153,7 @@
                     android:drawablePadding="@dimen/padding_small"
                     android:drawableStart="@drawable/ic_dread"
                     android:gravity="start|center_vertical"
+                    android:textColor="@color/text_dark_gray"
                     android:textSize="@dimen/font_smaller"/>
 
             </LinearLayout>
@@ -156,7 +163,154 @@
                 android:layout_height="@dimen/divider_size"
                 android:background="@color/light_brown"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/padding_normal"
+                    android:paddingTop="@dimen/padding_normal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fetus_god"
+                        android:textColor="@color/text_red"
+                        android:textSize="@dimen/font_small"/>
+
+                    <TextView
+                        android:id="@+id/lite_fetus_god"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_smallest"
+                        android:textColor="@color/text_dark_gray"
+                        android:textSize="@dimen/font_smaller"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/divider_size"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:background="@color/light_brown"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:text="@string/twenty_eight_star"
+                        android:textColor="@color/text_red"
+                        android:textSize="@dimen/font_small"/>
+
+                    <TextView
+                        android:id="@+id/lite_star_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_smallest"
+                        android:textColor="@color/text_dark_gray"
+                        android:textSize="@dimen/font_smaller"/>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/divider_size"
+                    android:layout_height="match_parent"
+                    android:background="@color/light_brown"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.4"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/padding_normal"
+                    android:paddingTop="@dimen/padding_normal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/peng_zu"
+                        android:textColor="@color/text_red"
+                        android:textSize="@dimen/font_small"/>
+
+                    <TextView
+                        android:id="@+id/lite_peng_zu_heavenly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:textColor="@color/text_dark_gray"
+                        android:textSize="@dimen/font_smaller"/>
+
+                    <TextView
+                        android:id="@+id/lite_peng_zu_earthly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:textColor="@color/text_dark_gray"
+                        android:textSize="@dimen/font_smaller"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/divider_size"
+                    android:layout_height="match_parent"
+                    android:background="@color/light_brown"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/padding_normal"
+                    android:paddingTop="@dimen/padding_normal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/evil_spirit"
+                        android:textColor="@color/text_red"
+                        android:textSize="@dimen/font_small"/>
+
+                    <TextView
+                        android:id="@+id/lite_evil_spirit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_smallest"
+                        android:textColor="@color/text_dark_gray"
+                        android:textSize="@dimen/font_smaller"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/divider_size"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:background="@color/light_brown"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:text="@string/five_elements"
+                        android:textColor="@color/text_red"
+                        android:textSize="@dimen/font_small"/>
+
+                    <TextView
+                        android:id="@+id/lite_five_elements"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_smallest"
+                        android:textColor="@color/text_dark_gray"
+                        android:textSize="@dimen/font_smaller"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 

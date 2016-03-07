@@ -113,7 +113,6 @@ public class NoPaddingTextView extends View {
 	public void setText(String text) {
 		mText = text;
 		calculateSize();
-
-		requestLayout();
+		invalidate();
 	}
 }

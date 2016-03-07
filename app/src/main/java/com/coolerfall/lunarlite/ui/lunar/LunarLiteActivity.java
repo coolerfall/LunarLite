@@ -39,6 +39,12 @@ public class LunarLiteActivity extends BaseActivity
 	@Bind(R.id.lite_lunar_date) TextView mTvLunarDate;
 	@Bind(R.id.lite_tv_suit) TextView mTvSuit;
 	@Bind(R.id.lite_tv_dread) TextView mTvDread;
+	@Bind(R.id.lite_fetus_god) TextView mTvFetusGod;
+	@Bind(R.id.lite_star_desc) TextView mTvStarDesc;
+	@Bind(R.id.lite_peng_zu_heavenly) TextView mTvPengZuHeavenly;
+	@Bind(R.id.lite_peng_zu_earthly) TextView mTvPengZuEarthly;
+	@Bind(R.id.lite_evil_spirit) TextView mTvEvilSpirit;
+	@Bind(R.id.lite_five_elements) TextView mTvFiveElements;
 
 	@Inject LunarLitePresenter mPresenter;
 
@@ -105,6 +111,12 @@ public class LunarLiteActivity extends BaseActivity
 		mTvCyclicalDay.setText(cyclicalDay);
 		mTvCyclicalMonth.setText(cyclicalMonth);
 		mTvLunarDate.setText(lunarDate);
+		mTvFetusGod.setText(lunar.getFetusGod());
+		mTvStarDesc.setText(lunar.getTwentyEightStar());
+		mTvPengZuHeavenly.setText(lunar.getPengzu()[0]);
+		mTvPengZuEarthly.setText(lunar.getPengzu()[1]);
+		mTvEvilSpirit.setText(lunar.getConflictEvilSpirit());
+		mTvFiveElements.setText(lunar.getFiveElements());
 	}
 
 	/* format day to `0x` if day is less than 10 */
