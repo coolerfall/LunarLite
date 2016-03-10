@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Some miscellaneous utils here.
@@ -22,7 +25,6 @@ public class Misc {
 	 * @param resid   the resource id of file in raw
 	 * @param file    the file to copy to
 	 * @throws java.io.IOException
-	 * @throws InterruptedException
 	 */
 	public static void copyRawFile(Context context, @RawRes int resid, File file)
 		throws IOException {
@@ -59,5 +61,19 @@ public class Misc {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Format millisecond according to format.
+	 *
+	 * @param millis milliseconds
+	 * @param format date format(such as: yyyy-MM-dd HH:mm:ss)
+	 * @return formatted date string
+	 */
+	public static String formatMillis(long millis, String format) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(format, Locale.CHINA);
+		Date date = new Date(millis);
+
+		return dateFormat.format(date);
 	}
 }

@@ -2,6 +2,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 
+def versionMajor = 0
+def versionMinor = 1
+def versionPatch = 0
+
 android {
 	compileSdkVersion 23
 	buildToolsVersion "23.0.2"
@@ -10,8 +14,8 @@ android {
 		applicationId "com.coolerfall.lunarlite"
 		minSdkVersion 15
 		targetSdkVersion 23
-		versionCode 1
-		versionName "0.1.0"
+		versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100
+		versionName "${versionMajor}.${versionMinor}.${versionPatch}"
 	}
 
 	signingConfigs {
@@ -33,6 +37,16 @@ android {
 			minifyEnabled false
 			applicationIdSuffix '.debug'
 			proguardFiles 'proguard-rules.pro'
+		}
+	}
+
+	productFlavors {
+		internal {
+			applicationIdSuffix '.internal'
+		}
+
+		production {
+
 		}
 	}
 

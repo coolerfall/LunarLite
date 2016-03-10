@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.ColorInt;
+import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -27,8 +28,9 @@ public class NoPaddingTextView extends View {
 
 	private int mWidth;
 	private int mHeight;
+	private int mWidthDiff;
 	private String mText;
-	private Paint mPaint;
+	private TextPaint mPaint;
 	private Rect mBounds = new Rect();
 
 	public NoPaddingTextView(final Context context) {
@@ -53,7 +55,7 @@ public class NoPaddingTextView extends View {
 		mText = a.getString(R.styleable.NoPaddingTextView_android_text);
 		a.recycle();
 
-		mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		mPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
 		mPaint.setTextSize(mTextSize);
 
 		calculateSize();
@@ -71,7 +73,7 @@ public class NoPaddingTextView extends View {
 		mPaint.setTextSize(mTextSize);
 
 		if (!TextUtils.isEmpty(mText)) {
-			canvas.drawText(mText, -mBounds.left, getHeight() - mBounds.bottom, mPaint);
+			canvas.drawText(mText, -mBounds.left + mWidthDiff, getHeight() - mBounds.bottom, mPaint);
 		}
 		super.onDraw(canvas);
 	}
@@ -80,7 +82,10 @@ public class NoPaddingTextView extends View {
 		if (!TextUtils.isEmpty(mText)) {
 			mPaint.getTextBounds(mText, 0, mText.length(), mBounds);
 			mHeight = mBounds.height();
-			mWidth = mBounds.width();
+			int boundsWidth = mBounds.width();
+			double measuredWidth = (int) Math.ceil(mPaint.measureText(mText));
+			mWidth = (int) (Math.ceil(boundsWidth + measuredWidth) / 2);
+			mWidthDiff = (int) Math.ceil(Math.abs((mWidth - boundsWidth) / 2f));
 		}
 	}
 
