@@ -10,7 +10,7 @@ import dagger.Component;
  * Activity-level components should extend this componet.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since jan. 08, 2016
+ * @since Jan. 08, 2016
  */
 @PerActivity @Component(dependencies = AppComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
