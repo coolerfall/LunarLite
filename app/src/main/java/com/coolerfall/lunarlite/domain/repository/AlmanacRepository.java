@@ -8,7 +8,6 @@ import rx.Observable;
  * Interface that represents a repository for getting related data from database.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since Feb. 20, 2016
  */
 public interface AlmanacRepository {
 	/**

@@ -15,7 +15,6 @@ import java.util.Locale;
  * Some miscellaneous utils here.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since Feb. 29, 2016
  */
 public class Misc {
 	/**

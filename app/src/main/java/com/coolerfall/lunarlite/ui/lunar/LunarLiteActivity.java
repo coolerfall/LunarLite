@@ -9,7 +9,6 @@ import com.coolerfall.lunarlite.data.db.model.Almanac;
 import com.coolerfall.lunarlite.di.HasComponent;
 import com.coolerfall.lunarlite.di.component.DaggerLunarComponent;
 import com.coolerfall.lunarlite.di.component.LunarComponent;
-import com.coolerfall.lunarlite.di.module.ActivityModule;
 import com.coolerfall.lunarlite.ui.BaseActivity;
 import com.coolerfall.lunarlite.ui.Presenter;
 import com.coolerfall.lunarlite.ui.widget.NoPaddingTextView;
@@ -30,7 +29,6 @@ import butterknife.OnClick;
  * The entrance of this app, show lunar calendar and almanac here.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since Mar. 05, 2016
  */
 public class LunarLiteActivity extends BaseActivity
 	implements HasComponent<LunarComponent>, LunarLiteView, LunarView.OnDatePickListener {
@@ -76,7 +74,8 @@ public class LunarLiteActivity extends BaseActivity
 		}
 	}
 
-	@Override public boolean onCreateOptionsMenu(Menu menu) {
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.menu_lite, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -96,7 +95,7 @@ public class LunarLiteActivity extends BaseActivity
 	public LunarComponent getComponent() {
 		return DaggerLunarComponent.builder()
 			.appComponent(getAppComponent())
-			.activityModule(new ActivityModule(this)).build();
+			.build();
 	}
 
 	@Override

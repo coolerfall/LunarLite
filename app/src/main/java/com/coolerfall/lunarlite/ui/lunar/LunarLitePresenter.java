@@ -14,7 +14,6 @@ import rx.Subscription;
  * A presenter controls communication between {@link LunarLiteView} and models of the presentation.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since Feb. 29, 2016
  */
 @PerActivity
 public class LunarLitePresenter implements Presenter {

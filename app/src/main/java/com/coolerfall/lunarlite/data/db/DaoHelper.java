@@ -9,7 +9,6 @@ import com.coolerfall.lunarlite.data.db.model.DaoSession;
  * Dao helper: handle dao here.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since Feb. 20, 2016
  */
 public class DaoHelper {
 	public static final String DB_NAME = "almanac.db";

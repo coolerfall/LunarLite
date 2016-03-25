@@ -8,4 +8,9 @@
         <attr name="android:textStyle"/>
     </declare-styleable>
 
+    <declare-styleable name="PickerView">
+        <attr name="android:background" />
+    </declare-styleable>
+
+
 </resources>

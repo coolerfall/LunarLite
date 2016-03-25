@@ -11,8 +11,7 @@ import dagger.Component;
 /**
  * A application-level component used in this projct.
  *
- * @author Vincent Cheung
- * @since Jan. 08, 2016
+ * @author Vincent Cheung (coolingfall@gmail.com)
  */
 @Singleton @Component(modules = AppModule.class)
 public interface AppComponent {
