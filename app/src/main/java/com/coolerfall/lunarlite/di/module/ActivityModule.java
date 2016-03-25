@@ -12,8 +12,7 @@ import dagger.Provides;
 /**
  * A module to wrap the Activity state and expose it to the graph.
  *
- * @author Vincent Cheung
- * @since Jan. 08, 2016
+ * @author Vincent Cheung (coolingfall@gmail.com)
  */
 @Module
 public class ActivityModule {

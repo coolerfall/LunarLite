@@ -14,7 +14,7 @@ android {
 		applicationId "com.coolerfall.lunarlite"
 		minSdkVersion 15
 		targetSdkVersion 23
-		versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100
+		versionCode versionMajor * 1000 + versionMinor * 100 + versionPatch
 		versionName "${versionMajor}.${versionMinor}.${versionPatch}"
 	}
 
@@ -60,7 +60,7 @@ def libs = [
 		supportLib : '23.2.0',
 		rxjava     : '1.1.0',
 		rxandroid  : '1.1.0',
-		dagger     : '2.0.2',
+		dagger     : '2.1',
 		annotation : '10.0-b28',
 		retrofit   : '1.9.0',
 		okhttp     : '2.5.0',
@@ -73,7 +73,6 @@ def libs = [
 ]
 
 dependencies {
-	compile fileTree(include: ['*.jar'], dir: 'libs')
 	compile "com.android.support:appcompat-v7:${libs.supportLib}"
 
 	apt "com.google.dagger:dagger-compiler:${libs.dagger}"

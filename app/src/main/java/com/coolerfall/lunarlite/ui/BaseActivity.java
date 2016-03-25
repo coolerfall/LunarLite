@@ -12,8 +12,7 @@ import butterknife.ButterKnife;
 /**
  * Base activity of this project, all activity must inherit from this activity.
  *
- * @author Vincent Cheung
- * @since Aug. 05, 2015
+ * @author Vincent Cheung (coolingfall@gmail.com)
  */
 public abstract class BaseActivity extends AppCompatActivity implements BaseFragment.OnBackHandler {
 	private BaseFragment mCurrentFtagment;

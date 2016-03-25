@@ -6,8 +6,7 @@ import javax.inject.Singleton;
 /**
  * Class used to navigate through the application.
  *
- * @author Vincent Cheung
- * @since Jan. 13, 2016
+ * @author Vincent Cheung (coolingfall@gmail.com)
  */
 @Singleton
 public class Navigator {

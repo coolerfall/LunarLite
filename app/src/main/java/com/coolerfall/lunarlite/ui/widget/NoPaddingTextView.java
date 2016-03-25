@@ -20,7 +20,6 @@ import com.coolerfall.lunarlite.R;
  * A text view without padding.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since Mar. 05, 2016
  */
 public class NoPaddingTextView extends View {
 	private int mTextSize = 16;

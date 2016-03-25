@@ -7,7 +7,6 @@ import com.coolerfall.lunarlite.ui.View;
  * Used as a view representing a lunar view.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since Feb. 29, 2016
  */
 public interface LunarLiteView extends View {
 	/**

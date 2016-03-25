@@ -9,7 +9,6 @@ import com.coolerfall.lunarlite.data.db.model.DaoMaster;
  * Database open helper used in this app.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since Feb. 20, 2016
  */
 public class DbOpenHelper extends DaoMaster.OpenHelper {
 

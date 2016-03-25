@@ -18,7 +18,6 @@ import timber.log.Timber;
  * This is the lunar application through the whole project.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since Feb. 20, 2016
  */
 public class LunarApplication extends Application implements HasComponent<AppComponent> {
 	private static final String TAG = "Vtag";

@@ -17,7 +17,6 @@ import rx.Observable;
  * Provide almanac data source from database.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since Feb. 20, 2016
  */
 public class AlmanacDataSource implements AlmanacRepository {
 	private AlmanacDao mAlmanacDao;

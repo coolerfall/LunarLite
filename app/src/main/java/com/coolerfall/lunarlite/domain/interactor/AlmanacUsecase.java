@@ -13,7 +13,6 @@ import rx.schedulers.Schedulers;
  * This class represents a almanac use case for retrieving data from database.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since Feb. 20, 2016
  */
 public class AlmanacUsecase {
 	private AlmanacRepository mRepository;

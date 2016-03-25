@@ -15,7 +15,6 @@ import dagger.Provides;
  * Application module used in this project.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
- * @since Feb. 20, 2016
  */
 @Module
 public class AppModule {

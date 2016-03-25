@@ -17,8 +17,7 @@ import butterknife.ButterKnife;
 /**
  * Base fragment for all fragments, all fragments must inherit from this fragment.
  *
- * @author Vincent Cheung
- * @since  Aug. 05, 2015
+ * @author Vincent Cheung (coolingfall@gmail.com)
  */
 public abstract class BaseFragment extends Fragment {
 	private OnBackHandler mOnBackHandler;
