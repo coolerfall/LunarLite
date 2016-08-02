@@ -76,7 +76,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1.0">
 
-                    <com.coolerfall.lunarlite.ui.widget.NoPaddingTextView
+                    <com.anbillon.lunarlite.ui.widget.NoPaddingTextView
                         android:id="@+id/lite_solar_day"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
