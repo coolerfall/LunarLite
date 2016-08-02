@@ -4,7 +4,7 @@
           xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".app.LunarApplication"
+        android:name="com.anbillon.lunarlite.app.LunarApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +14,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".ui.lunar.LunarLiteActivity">
+            android:name="com.anbillon.lunarlite.ui.lunar.LunarLiteActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
