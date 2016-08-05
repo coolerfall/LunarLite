@@ -19,7 +19,7 @@ import java.util.Calendar;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -29,38 +29,34 @@ import butterknife.OnClick;
  */
 public class LunarLiteActivity extends BaseActivity
 	implements LunarLiteView, LunarView.OnDatePickListener {
-	@Bind(R.id.lite_toolbar) Toolbar toolbar;
-	@Bind(R.id.lite_toolbar_tv_title) TextView tvTitle;
-	@Bind(R.id.lite_toolbar_tv_sub_title) TextView tvSubTitle;
-	@Bind(R.id.lite_lunar_view) LunarView lunarView;
-	@Bind(R.id.lite_week_day) TextView tvWeekDay;
-	@Bind(R.id.lite_week_of_year) TextView tvWeekOfYear;
-	@Bind(R.id.lite_cyclical_day) TextView tvCyclicalDay;
-	@Bind(R.id.lite_cyclical_month) TextView tvCyclicalMonth;
-	@Bind(R.id.lite_solar_day) NoPaddingTextView tvSolarDay;
-	@Bind(R.id.lite_lunar_date) TextView tvLunarDate;
-	@Bind(R.id.lite_tv_suit) TextView tvSuit;
-	@Bind(R.id.lite_tv_dread) TextView tvDread;
-	@Bind(R.id.lite_fetus_god) TextView tvFetusGod;
-	@Bind(R.id.lite_star_desc) TextView tvStarDesc;
-	@Bind(R.id.lite_peng_zu_heavenly) TextView tvPengZuHeavenly;
-	@Bind(R.id.lite_peng_zu_earthly) TextView tvPengZuEarthly;
-	@Bind(R.id.lite_evil_spirit) TextView tvEvilSpirit;
-	@Bind(R.id.lite_five_elements) TextView tvFiveElements;
+	@BindView(R.id.lite_toolbar) Toolbar toolbar;
+	@BindView(R.id.lite_toolbar_tv_title) TextView tvTitle;
+	@BindView(R.id.lite_toolbar_tv_sub_title) TextView tvSubTitle;
+	@BindView(R.id.lite_lunar_view) LunarView lunarView;
+	@BindView(R.id.lite_week_day) TextView tvWeekDay;
+	@BindView(R.id.lite_week_of_year) TextView tvWeekOfYear;
+	@BindView(R.id.lite_cyclical_day) TextView tvCyclicalDay;
+	@BindView(R.id.lite_cyclical_month) TextView tvCyclicalMonth;
+	@BindView(R.id.lite_solar_day) NoPaddingTextView tvSolarDay;
+	@BindView(R.id.lite_lunar_date) TextView tvLunarDate;
+	@BindView(R.id.lite_tv_suit) TextView tvSuit;
+	@BindView(R.id.lite_tv_dread) TextView tvDread;
+	@BindView(R.id.lite_fetus_god) TextView tvFetusGod;
+	@BindView(R.id.lite_star_desc) TextView tvStarDesc;
+	@BindView(R.id.lite_peng_zu_heavenly) TextView tvPengZuHeavenly;
+	@BindView(R.id.lite_peng_zu_earthly) TextView tvPengZuEarthly;
+	@BindView(R.id.lite_evil_spirit) TextView tvEvilSpirit;
+	@BindView(R.id.lite_five_elements) TextView tvFiveElements;
 
 	@Inject LunarLitePresenter presenter;
 
-	@Override
-	protected int getLayoutResID() {
+	@Override protected int layoutResId() {
 		return R.layout.activity_lunar_lite;
 	}
 
-	@Override
-	protected void initView() {
+	@Override protected void initView() {
 		/* initialize denpendency injection */
-		DaggerLunarComponent.builder()
-			.appComponent(getAppComponent())
-			.build().inject(this);
+		DaggerLunarComponent.builder().appComponent(getAppComponent()).build().inject(this);
 		delegatePresenter(presenter, this);
 
 		/* init view */
@@ -73,20 +69,17 @@ public class LunarLiteActivity extends BaseActivity
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	@Override public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.menu_lite, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 
-	@Override
-	public void bindAlmanac(Almanac almanac) {
-		tvSuit.setText(almanac.getSuit());
-		tvDread.setText(almanac.getDread());
+	@Override public void bindAlmanac(Almanac almanac) {
+		tvSuit.setText(almanac.suit());
+		tvDread.setText(almanac.dread());
 	}
 
-	@Override
-	public void onDatePick(LunarView view, MonthDay monthDay) {
+	@Override public void onDatePick(LunarView view, MonthDay monthDay) {
 		Lunar lunar = monthDay.getLunar();
 		Calendar calendar = monthDay.getCalendar();
 		presenter.loadAlmanac(lunar.getWielding(), lunar.getHeavenlyAndEarthly());
@@ -96,18 +89,18 @@ public class LunarLiteActivity extends BaseActivity
 			.put("week_day", lunar.getDayOfWeekInChinese())
 			.format();
 		CharSequence weekOfYear = Phrase.from(this, R.string.week_of_year)
-			.put("week_of_year", calendar.get(Calendar.WEEK_OF_YEAR)).format();
-		CharSequence cyclicalDay = Phrase.from(this, R.string.day)
-			.put("day", lunar.getCyclicalDay())
+			.put("week_of_year", calendar.get(Calendar.WEEK_OF_YEAR))
 			.format();
-		CharSequence cyclicalMonth = Phrase.from(this, R.string.month)
-			.put("month", lunar.getCyclicalMonth())
-			.format();
+		CharSequence cyclicalDay =
+			Phrase.from(this, R.string.day).put("day", lunar.getCyclicalDay()).format();
+		CharSequence cyclicalMonth =
+			Phrase.from(this, R.string.month).put("month", lunar.getCyclicalMonth()).format();
 		CharSequence lunarDate = Phrase.from(this, R.string.lunar_date)
 			.put("year", lunar.getCyclicalYear())
 			.put("zodiac", lunar.getZodiac())
 			.put("month", lunar.getLunarMonth())
-			.put("day", lunar.getLunarDay()).format();
+			.put("day", lunar.getLunarDay())
+			.format();
 
 		tvTitle.setText(Misc.formatMillis(calendar.getTimeInMillis(), "yyyy年MM月dd日"));
 		tvSubTitle.setText(lunarDate);

@@ -1,19 +1,20 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.squareup.sqldelight'
 
 def versionMajor = 0
 def versionMinor = 1
 def versionPatch = 0
 
 android {
-	compileSdkVersion 23
-	buildToolsVersion "23.0.2"
+	compileSdkVersion versions.compileSdk
+	buildToolsVersion versions.buildTools
 
 	defaultConfig {
 		applicationId "com.coolerfall.lunarlite"
-		minSdkVersion 15
-		targetSdkVersion 23
+		minSdkVersion versions.minSdk
+		targetSdkVersion versions.targetSdk
 		versionCode versionMajor * 1000 + versionMinor * 100 + versionPatch
 		versionName "${versionMajor}.${versionMinor}.${versionPatch}"
 	}
@@ -25,17 +26,23 @@ android {
 			keyAlias "android"
 			keyPassword "lunardebug"
 		}
+
+		release {
+
+		}
 	}
 
 	buildTypes {
-		release {
+		debug {
 			minifyEnabled false
+			signingConfig signingConfigs.debug
+			applicationIdSuffix '.debug'
 			proguardFiles 'proguard-rules.pro'
 		}
 
-		debug {
+		release {
+			signingConfig signingConfigs.release
 			minifyEnabled false
-			applicationIdSuffix '.debug'
 			proguardFiles 'proguard-rules.pro'
 		}
 	}
@@ -45,9 +52,7 @@ android {
 			applicationIdSuffix '.internal'
 		}
 
-		production {
-
-		}
+		production {}
 	}
 
 	compileOptions {
@@ -56,36 +61,22 @@ android {
 	}
 }
 
-def libs = [
-		supportLib : '23.2.0',
-		rxjava     : '1.1.0',
-		rxandroid  : '1.1.0',
-		dagger     : '2.1',
-		annotation : '10.0-b28',
-		retrofit   : '1.9.0',
-		okhttp     : '2.5.0',
-		butterknife: '7.0.1',
-		greendao   : '2.1.0',
-		timber     : '3.1.0',
-		phrase     : '1.1.0',
-		lunarview  : '1.0.1',
-		robolectric: '3.0'
-]
-
 dependencies {
-	compile "com.android.support:appcompat-v7:${libs.supportLib}"
+	compile libs.appcompatv7
+	provided libs.supportAnnotation
 
-	apt "com.google.dagger:dagger-compiler:${libs.dagger}"
-	provided "org.glassfish:javax.annotation:${libs.annotation}"
+	compile libs.dagger
+	apt libs.daggerCompiler
+	apt libs.butterKnifeCompiler
+	apt libs.autoValue
+	provided libs.autoValueAnnotations
 
-	compile "com.google.dagger:dagger:${libs.dagger}"
-	compile "io.reactivex:rxjava:${libs.rxjava}"
-	compile "io.reactivex:rxandroid:${libs.rxandroid}"
-	compile "com.jakewharton:butterknife:${libs.butterknife}"
-	compile "com.jakewharton.timber:timber:${libs.timber}"
-	compile "com.squareup.phrase:phrase:${libs.phrase}"
-	compile "de.greenrobot:greendao:${libs.greendao}"
-	compile "com.coolerfall:android-lunar-view:${libs.lunarview}"
-
-	testCompile "org.robolectric:robolectric:${libs.robolectric}"
+	compile libs.rxJava
+	compile libs.rxAndroid
+	compile libs.butterKnife
+	compile libs.sqlbrite
+	compile libs.timber
+	compile libs.phrase
+	compile libs.greenDao
+	compile libs.lunarView
 }

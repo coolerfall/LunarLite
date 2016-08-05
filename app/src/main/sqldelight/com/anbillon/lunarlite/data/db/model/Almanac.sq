@@ -1,0 +1,9 @@
+CREATE TABLE almanac (
+  wielding INTEGER AS Integer NOT NULL,
+  hseb INTEGER AS Integer NOT NULL,
+  dread TEXT NOT NULL,
+  suit TEXT NOT NULL
+);
+
+select_by_wielding_and_hseb:
+SELECT * FROM almanac WHERE wielding = ? and hseb = ?;

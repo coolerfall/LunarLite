@@ -10,6 +10,7 @@ import com.anbillon.lunarlite.app.LunarApplication;
 import com.anbillon.lunarlite.di.component.AppComponent;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Base activity of this project, all activity must inherit from this activity.
@@ -17,6 +18,7 @@ import butterknife.ButterKnife;
  * @author Vincent Cheung (coolingfall@gmail.com)
  */
 public abstract class BaseActivity extends AppCompatActivity {
+	private Unbinder unbinder;
 	private static final RxPresenter RX_PRESENTER = new RxPresenter() {
 	};
 	@SuppressWarnings("unchecked") private PresenterDelegate presenterDelegate =
@@ -26,11 +28,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		if (getLayoutResID() != 0) {
-			setContentView(getLayoutResID());
+		if (layoutResId() != 0) {
+			setContentView(layoutResId());
 		}
 
-		ButterKnife.bind(this);
+		unbinder = ButterKnife.bind(this);
 		initView();
 	}
 
@@ -38,7 +40,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 	protected void onDestroy() {
 		super.onDestroy();
 		presenterDelegate.detach();
-		ButterKnife.unbind(this);
+		unbinder.unbind();
 	}
 
 	@Override protected void onSaveInstanceState(Bundle outState) {
@@ -62,7 +64,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 	/**
 	 * Get layout resource id of inherited activity.
 	 */
-	protected abstract @LayoutRes int getLayoutResID();
+	protected abstract @LayoutRes int layoutResId();
 
 	/**
 	 * Initialize view in inherited activity.

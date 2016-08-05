@@ -3,19 +3,17 @@ package com.anbillon.lunarlite.di.module;
 import android.app.Activity;
 import android.content.Context;
 
-
 import com.anbillon.lunarlite.di.scope.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;
 
 /**
- * A module to wrap the Activity state and expose it to the graph.
+ * Dagger module that provides activity level related collaborators.
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
  */
-@Module
-public class ActivityModule {
+@Module public final class ActivityModule {
 	private final Activity mActivity;
 
 	public ActivityModule(Activity activity) {
