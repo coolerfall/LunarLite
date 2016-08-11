@@ -5,12 +5,11 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:1.5.0'
+		classpath 'com.android.tools.build:gradle:2.1.2'
 		classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
 		classpath 'me.tatarka:gradle-retrolambda:3.2.5'
+		classpath 'com.squareup.sqldelight:gradle-plugin:0.4.4'
 
-		// NOTE: Do not place your application dependencies here; they belong
-		// in the individual module build.gradle files
 		configurations.classpath.exclude group: 'com.android.tools.external.lombok'
 	}
 }
@@ -18,9 +17,47 @@ buildscript {
 allprojects {
 	repositories {
 		jcenter()
+		maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 	}
 }
 
 task clean(type: Delete) {
 	delete rootProject.buildDir
+}
+
+ext {
+	versions = [compileSdk: 24,
+	            buildTools: '24.0.0',
+	            minSdk    : 15,
+	            targetSdk : 23]
+
+	libs = [supportv4           : 'com.android.support:support-v4:24.0.0',
+	        appcompatv7         : 'com.android.support:appcompat-v7:24.0.0',
+	        design              : 'com.android.support:design:24.0.0',
+	        recyclerview        : 'com.android.support:recyclerview-v7:24.0.0',
+	        palette             : 'com.android.support:palette-v7:24.0.0',
+	        supportAnnotation   : 'com.android.support:support-annotations:24.0.0',
+
+	        dagger              : 'com.google.dagger:dagger:2.5',
+	        daggerCompiler      : 'com.google.dagger:dagger-compiler:2.5',
+	        javaxAnnotation     : 'org.glassfish:javax.annotation:10.0-b28',
+	        rxJava              : 'io.reactivex:rxjava:1.1.6',
+	        rxAndroid           : 'io.reactivex:rxandroid:1.2.1',
+	        retrofit2           : 'com.squareup.retrofit2:retrofit:2.1.0',
+	        adapterRxJava       : 'com.squareup.retrofit2:adapter-rxjava:2.1.0',
+	        converterMoshi      : 'com.squareup.retrofit2:converter-moshi:2.1.0',
+	        okHttp3             : 'com.squareup.okhttp3:okhttp:3.3.1',
+	        loggingInterceptor  : 'com.squareup.okhttp3:logging-interceptor:3.3.1',
+
+	        autoValue           : 'com.google.auto.value:auto-value:1.2',
+	        autoValueAnnotations: "com.jakewharton.auto.value:auto-value-annotations:1.2-update1",
+	        moshi               : 'com.squareup.moshi:moshi:1.2.0',
+	        sqlbrite            : 'com.squareup.sqlbrite:sqlbrite:0.6.3',
+	        butterKnife         : 'com.jakewharton:butterknife:8.0.1',
+	        butterKnifeCompiler : 'com.jakewharton:butterknife-compiler:8.0.1',
+	        phrase              : 'com.squareup.phrase:phrase:1.1.0',
+	        timber              : 'com.jakewharton.timber:timber:4.1.2',
+
+	        greenDao            : 'de.greenrobot:greendao:2.1.0',
+	        lunarView           : 'com.coolerfall:android-lunar-view:1.0.2-SNAPSHOT']
 }

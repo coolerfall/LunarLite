@@ -10,7 +10,7 @@ Libraries Used
 * [RxAndroid][4]
 * [Butter Knife][5]
 * [Phrase][6]
-* [GreenDao][7]
+* [SqlBrite][7]
 
 
 License
@@ -38,4 +38,4 @@ License
 [4]: https://github.com/ReactiveX/RxAndroid
 [5]: https://github.com/JakeWharton/butterknife
 [6]: https://github.com/square/phrase
-[7]: https://github.com/greenrobot/greenDAO
+[7]: https://github.com/square/sqlbrite
