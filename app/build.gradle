@@ -12,7 +12,6 @@ android {
 	buildToolsVersion versions.buildTools
 
 	defaultConfig {
-		applicationId "com.coolerfall.lunarlite"
 		minSdkVersion versions.minSdk
 		targetSdkVersion versions.targetSdk
 		versionCode versionMajor * 1000 + versionMinor * 100 + versionPatch
@@ -27,9 +26,7 @@ android {
 			keyPassword "lunardebug"
 		}
 
-		release {
-
-		}
+		release {}
 	}
 
 	buildTypes {
@@ -42,17 +39,23 @@ android {
 
 		release {
 			signingConfig signingConfigs.release
-			minifyEnabled false
-			proguardFiles 'proguard-rules.pro'
+			minifyEnabled true
+			proguardFiles 'proguard-rules.pro', getDefaultProguardFile('proguard-android.txt')
 		}
 	}
 
 	productFlavors {
 		internal {
-			applicationIdSuffix '.internal'
+			applicationId "com.coolerfall.lunarlite.internal"
 		}
 
-		production {}
+		production {
+			applicationId "com.coolerfall.lunarlite"
+		}
+	}
+
+	lintOptions {
+		abortOnError false
 	}
 
 	compileOptions {
