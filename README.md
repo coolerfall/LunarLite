@@ -16,7 +16,7 @@ Libraries Used
 License
 =======
 
-    Copyright (C) 2016 Vincent Cheung
+    Copyright (C) 2016-present Tourbillon Group
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

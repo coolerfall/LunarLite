@@ -22,11 +22,11 @@ package com.anbillon.lunarlite.ui.widget.picker;
  * @author Vincent Cheung (coolingfall@gmail.com)
  */
 public interface OnItemClickListener {
-	/**
-	 * Callback method to be invoked when current item clicked
-	 *
-	 * @param picker    the picker view
-	 * @param itemIndex the index of clicked item
-	 */
-	void onItemClicked(PickerView picker, int itemIndex);
+  /**
+   * Callback method to be invoked when current item clicked
+   *
+   * @param picker the picker view
+   * @param itemIndex the index of clicked item
+   */
+  void onItemClicked(PickerView picker, int itemIndex);
 }

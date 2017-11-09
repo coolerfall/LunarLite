@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+  <string name="app_name">LunarLite</string>
+  <string name="week_day">星期{week_day}</string>
+  <string name="week_of_year">第{week_of_year}周</string>
+  <string name="year">{year}年</string>
+  <string name="month">{month}月</string>
+  <string name="day">{day}日</string>
+  <string name="lunar_date">{year}{zodiac}年&#160;&#160;{month}月{day}</string>
+  <string name="fetus_god">胎神</string>
+  <string name="twenty_eight_star">星宿</string>
+  <string name="peng_zu">彭祖</string>
+  <string name="evil_spirit">冲煞</string>
+  <string name="five_elements">五行</string>
+
+  <string name="menu_setting">设置</string>
+
+
 </resources>
