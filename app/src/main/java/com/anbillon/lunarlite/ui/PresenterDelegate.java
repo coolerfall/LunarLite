@@ -11,29 +11,29 @@ import static dagger.internal.Preconditions.checkNotNull;
  * @author Vincent Cheung (coolingfall@gmail.com)
  */
 public final class PresenterDelegate<T extends BaseView> implements Presenter<T> {
-	private Presenter<T> presenter;
+  private Presenter<T> presenter;
 
-	public PresenterDelegate(Presenter<T> presenter) {
-		this.presenter = checkNotNull(presenter, "presenter == null");
-	}
+  public PresenterDelegate(Presenter<T> presenter) {
+    this.presenter = checkNotNull(presenter, "presenter == null");
+  }
 
-	public void delegate(Presenter<T> presenter) {
-		this.presenter = checkNotNull(presenter, "presenter == null");
-	}
+  public void delegate(Presenter<T> presenter) {
+    this.presenter = checkNotNull(presenter, "presenter == null");
+  }
 
-	@Override public void attach(T view) {
-		presenter.attach(view);
-	}
+  @Override public void attach(T view) {
+    presenter.attach(view);
+  }
 
-	@Override public void restoreInstanceState(Bundle savedInstanceState) {
-		presenter.restoreInstanceState(savedInstanceState);
-	}
+  @Override public void restoreInstanceState(Bundle savedInstanceState) {
+    presenter.restoreInstanceState(savedInstanceState);
+  }
 
-	@Override public void saveInstanceState(Bundle outState) {
-		presenter.saveInstanceState(outState);
-	}
+  @Override public void saveInstanceState(Bundle outState) {
+    presenter.saveInstanceState(outState);
+  }
 
-	@Override public void detach() {
-		presenter.detach();
-	}
+  @Override public void detach() {
+    presenter.detach();
+  }
 }

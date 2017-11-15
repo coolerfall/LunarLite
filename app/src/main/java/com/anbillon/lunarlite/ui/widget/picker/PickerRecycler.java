@@ -19,11 +19,10 @@
 
 package com.anbillon.lunarlite.ui.widget.picker;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import android.view.View;
 import android.widget.LinearLayout;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Recycler stores picker items to reuse.
@@ -31,130 +30,129 @@ import android.widget.LinearLayout;
  * @author Vincent Cheung (coolingfall@gmail.com)
  */
 public class PickerRecycler {
-	/* cached items */
-	private List<View> mCachedItems;
-	/* cached empty items */
-	private List<View> mEmptyItems;
-	/* picker view */
-	private PickerView mPickerView;
+  /* cached items */
+  private List<View> mCachedItems;
+  /* cached empty items */
+  private List<View> mEmptyItems;
+  /* picker view */
+  private PickerView mPickerView;
 
-	/**
-	 * The default constructor for picker recycler.
-	 *
-	 * @param picker the picker view
-	 */
-	public PickerRecycler(PickerView picker) {
-		mPickerView = picker;
-	}
+  /**
+   * The default constructor for picker recycler.
+   *
+   * @param picker the picker view
+   */
+  public PickerRecycler(PickerView picker) {
+    mPickerView = picker;
+  }
 
-	/**
-	 * Recycles items from specified layout.
-	 * There are saved only items not included to specified range.
-	 * All the cached items are removed from original layout.
-	 *
-	 * @param layout    the layout containing items to be cached
-	 * @param firstItem the number of first item in layout
-	 * @param range     the range of current wheel items
-	 * @return the new value of first item number
-	 */
-	public int recycleItems(LinearLayout layout, int firstItem, ItemsRange range) {
-		int index = firstItem;
-		for (int i = 0; i < layout.getChildCount(); ) {
-			if (!range.contains(index)) {
-				recycleView(layout.getChildAt(i), index);
-				layout.removeViewAt(i);
-				/* first item */
-				if (i == 0) {
-					firstItem++;
-				}
-			} else {
+  /**
+   * Recycles items from specified layout.
+   * There are saved only items not included to specified range.
+   * All the cached items are removed from original layout.
+   *
+   * @param layout the layout containing items to be cached
+   * @param firstItem the number of first item in layout
+   * @param range the range of current wheel items
+   * @return the new value of first item number
+   */
+  public int recycleItems(LinearLayout layout, int firstItem, ItemsRange range) {
+    int index = firstItem;
+    for (int i = 0; i < layout.getChildCount(); ) {
+      if (!range.contains(index)) {
+        recycleView(layout.getChildAt(i), index);
+        layout.removeViewAt(i);
+        /* first item */
+        if (i == 0) {
+          firstItem++;
+        }
+      } else {
 				/* go to next item */
-				i++;
-			}
-			index++;
-		}
-		return firstItem;
-	}
+        i++;
+      }
+      index++;
+    }
+    return firstItem;
+  }
 
-	/**
-	 * Gets item view
-	 *
-	 * @return the cached view
-	 */
-	public View getItem() {
-		return getCachedView(mCachedItems);
-	}
+  /**
+   * Gets item view
+   *
+   * @return the cached view
+   */
+  public View getItem() {
+    return getCachedView(mCachedItems);
+  }
 
-	/**
-	 * Gets empty item view
-	 *
-	 * @return the cached empty view
-	 */
-	public View getEmptyItem() {
-		return getCachedView(mEmptyItems);
-	}
+  /**
+   * Gets empty item view
+   *
+   * @return the cached empty view
+   */
+  public View getEmptyItem() {
+    return getCachedView(mEmptyItems);
+  }
 
-	/**
-	 * Clears all views
-	 */
-	public void clearAll() {
-		if (mCachedItems != null) {
-			mCachedItems.clear();
-		}
-		if (mEmptyItems != null) {
-			mEmptyItems.clear();
-		}
-	}
+  /**
+   * Clears all views
+   */
+  public void clearAll() {
+    if (mCachedItems != null) {
+      mCachedItems.clear();
+    }
+    if (mEmptyItems != null) {
+      mEmptyItems.clear();
+    }
+  }
 
-	/**
-	 * Adds view to specified cache. Creates a cache list if it is null.
-	 *
-	 * @param view  the view to be cached
-	 * @param cache the cache list
-	 * @return the cache list
-	 */
-	private List<View> addView(View view, List<View> cache) {
-		if (cache == null) {
-			cache = new LinkedList<>();
-		}
+  /**
+   * Adds view to specified cache. Creates a cache list if it is null.
+   *
+   * @param view the view to be cached
+   * @param cache the cache list
+   * @return the cache list
+   */
+  private List<View> addView(View view, List<View> cache) {
+    if (cache == null) {
+      cache = new LinkedList<>();
+    }
 
-		cache.add(view);
-		return cache;
-	}
+    cache.add(view);
+    return cache;
+  }
 
-	/**
-	 * Adds view to cache. Determines view type (item view or empty one) by index.
-	 *
-	 * @param view  the view to be cached
-	 * @param index the index of view
-	 */
-	private void recycleView(View view, int index) {
-		int count = mPickerView.getAdapter().getItemCount();
+  /**
+   * Adds view to cache. Determines view type (item view or empty one) by index.
+   *
+   * @param view the view to be cached
+   * @param index the index of view
+   */
+  private void recycleView(View view, int index) {
+    int count = mPickerView.getAdapter().getItemCount();
 
-		if ((index < 0 || index >= count) && !mPickerView.isCyclic()) {
-			mEmptyItems = addView(view, mEmptyItems);
-		} else {
-			while (index < 0) {
-				index = count + index;
-			}
-			index %= count;
-			mCachedItems = addView(view, mCachedItems);
-		}
-	}
+    if ((index < 0 || index >= count) && !mPickerView.isCyclic()) {
+      mEmptyItems = addView(view, mEmptyItems);
+    } else {
+      while (index < 0) {
+        index = count + index;
+      }
+      index %= count;
+      mCachedItems = addView(view, mCachedItems);
+    }
+  }
 
-	/**
-	 * Gets view from specified cache.
-	 *
-	 * @param cache the cache
-	 * @return the first view from cache.
-	 */
-	private View getCachedView(List<View> cache) {
-		if (cache != null && cache.size() > 0) {
-			View view = cache.get(0);
-			cache.remove(0);
-			return view;
-		}
-		return null;
-	}
-
+  /**
+   * Gets view from specified cache.
+   *
+   * @param cache the cache
+   * @return the first view from cache.
+   */
+  private View getCachedView(List<View> cache) {
+    if (cache != null && cache.size() > 0) {
+      View view = cache.get(0);
+      cache.remove(0);
+      return view;
+    }
+    return null;
+  }
 }

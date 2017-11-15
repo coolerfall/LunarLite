@@ -4,8 +4,8 @@ android:
   components:
     - platform-tools
     - tools
-    - android-24
-    - build-tools-24.0.0
+    - android-26
+    - build-tools-26.0.2
     - extra-android-m2repository
 script:
   - "./gradlew assembleProductionDebug"

@@ -1,7 +1,6 @@
 package com.anbillon.lunarlite.di.scope;
 
 import java.lang.annotation.Retention;
-
 import javax.inject.Scope;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -12,6 +11,5 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *
  * @author Vincent Cheung (coolingfall@gmail.com)
  */
-@Scope @Retention(RUNTIME)
-public @interface PerActivity {
+@Scope @Retention(RUNTIME) public @interface PerActivity {
 }

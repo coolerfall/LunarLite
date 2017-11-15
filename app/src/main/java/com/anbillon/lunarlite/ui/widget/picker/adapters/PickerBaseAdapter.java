@@ -16,12 +16,11 @@
 
 package com.anbillon.lunarlite.ui.widget.picker.adapters;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import android.database.DataSetObserver;
 import android.view.View;
 import android.view.ViewGroup;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Picker view base adapter.
@@ -29,38 +28,35 @@ import android.view.ViewGroup;
  * @author Vincent Cheung (coolingfall@gmail.com)
  */
 public abstract class PickerBaseAdapter implements PickerAdapter {
-	private List<DataSetObserver> mDatasetObservers = new LinkedList<>();
+  private List<DataSetObserver> mDatasetObservers = new LinkedList<>();
 
-	@Override
-	public View getEmptyItem(View convertView, ViewGroup parent) {
-		return null;
-	}
+  @Override public View getEmptyItem(View convertView, ViewGroup parent) {
+    return null;
+  }
 
-	@Override
-	public void registerDataSetObserver(DataSetObserver observer) {
-		mDatasetObservers.add(observer);
-	}
+  @Override public void registerDataSetObserver(DataSetObserver observer) {
+    mDatasetObservers.add(observer);
+  }
 
-	@Override
-	public void unregisterDataSetObserver(DataSetObserver observer) {
-		mDatasetObservers.remove(observer);
-	}
+  @Override public void unregisterDataSetObserver(DataSetObserver observer) {
+    mDatasetObservers.remove(observer);
+  }
 
-	/**
-	 * Notifies observers about data changing.
-	 */
-	protected void notifyDataChanged() {
-		for (DataSetObserver observer : mDatasetObservers) {
-			observer.onChanged();
-		}
-	}
+  /**
+   * Notifies observers about data changing.
+   */
+  protected void notifyDataChanged() {
+    for (DataSetObserver observer : mDatasetObservers) {
+      observer.onChanged();
+    }
+  }
 
-	/**
-	 * Notifies observers about invalidating data.
-	 */
-	protected void notifyDataInvalidated() {
-		for (DataSetObserver observer : mDatasetObservers) {
-			observer.onInvalidated();
-		}
-	}
+  /**
+   * Notifies observers about invalidating data.
+   */
+  protected void notifyDataInvalidated() {
+    for (DataSetObserver observer : mDatasetObservers) {
+      observer.onInvalidated();
+    }
+  }
 }

@@ -1,85 +1,94 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'com.squareup.sqldelight'
 
 def versionMajor = 0
-def versionMinor = 1
+def versionMinor = 2
 def versionPatch = 0
+def versionBuild = 1
 
 android {
-	compileSdkVersion versions.compileSdk
-	buildToolsVersion versions.buildTools
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
 
-	defaultConfig {
-		minSdkVersion versions.minSdk
-		targetSdkVersion versions.targetSdk
-		versionCode versionMajor * 1000 + versionMinor * 100 + versionPatch
-		versionName "${versionMajor}.${versionMinor}.${versionPatch}"
-	}
+  defaultConfig {
+    applicationId "com.coolerfall.lunarlite"
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
 
-	signingConfigs {
-		debug {
-			storeFile file("../debug.keystore")
-			storePassword "lunardebug"
-			keyAlias "android"
-			keyPassword "lunardebug"
-		}
+    versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
+    versionName "${versionMajor}.${versionMinor}.${versionPatch}"
 
-		release {}
-	}
+    resConfigs "en", "zh-rCN"
+  }
 
-	buildTypes {
-		debug {
-			minifyEnabled false
-			signingConfig signingConfigs.debug
-			applicationIdSuffix '.debug'
-			proguardFiles 'proguard-rules.pro'
-		}
+  lintOptions {
+    textReport true
+    textOutput 'stdout'
+    warning 'MissingTranslation'
+    fatal 'UnusedResources'
+    abortOnError false
+  }
 
-		release {
-			signingConfig signingConfigs.release
-			minifyEnabled true
-			proguardFiles 'proguard-rules.pro', getDefaultProguardFile('proguard-android.txt')
-		}
-	}
+  packagingOptions {
+    exclude 'LICENSE.txt'
+  }
 
-	productFlavors {
-		internal {
-			applicationId "com.coolerfall.lunarlite.internal"
-		}
+  signingConfigs {
+    debug {
+      storeFile file("../debug.keystore")
+      storePassword "lunardebug"
+      keyAlias "android"
+      keyPassword "lunardebug"
+    }
+  }
 
-		production {
-			applicationId "com.coolerfall.lunarlite"
-		}
-	}
+  buildTypes {
+    release {
+      minifyEnabled true
+      proguardFiles 'proguard-rules.pro'
+    }
 
-	lintOptions {
-		abortOnError false
-	}
+    debug {
+      minifyEnabled false
+      applicationIdSuffix '.debug'
+      proguardFiles 'proguard-rules.pro'
+    }
+  }
 
-	compileOptions {
-		sourceCompatibility JavaVersion.VERSION_1_8
-		targetCompatibility JavaVersion.VERSION_1_8
-	}
+  flavorDimensions "free"
+  productFlavors {
+    internal {
+      applicationIdSuffix '.internal'
+    }
+
+    production {
+    }
+  }
 }
 
 dependencies {
-	compile libs.appcompatv7
-	provided libs.supportAnnotation
+  implementation rootProject.ext.kotlinLib
 
-	compile libs.dagger
-	apt libs.daggerCompiler
-	apt libs.butterKnifeCompiler
-	apt libs.autoValue
-	provided libs.autoValueAnnotations
+  compileOnly rootProject.ext.supportAnnotations
+  implementation rootProject.ext.appcompatV7
 
-	compile libs.rxJava
-	compile libs.rxAndroid
-	compile libs.butterKnife
-	compile libs.sqlbrite
-	compile libs.timber
-	compile libs.phrase
-	compile libs.greenDao
-	compile libs.lunarView
+  compileOnly rootProject.ext.javaxInject
+  compileOnly rootProject.ext.javaxAnnotations
+  implementation rootProject.ext.dagger
+  implementation rootProject.ext.daggerAndroid
+  implementation rootProject.ext.daggerAndroidSupport
+  kapt rootProject.ext.daggerCompiler
+
+  implementation rootProject.ext.rxjava2
+  implementation rootProject.ext.rxAndroid2
+  implementation rootProject.ext.sqlbrite2
+
+  implementation rootProject.ext.butterKnife
+  kapt rootProject.ext.butterKnifeCompiler
+
+  implementation rootProject.ext.timber
+  implementation rootProject.ext.phrase
+  implementation rootProject.ext.lunarView
 }

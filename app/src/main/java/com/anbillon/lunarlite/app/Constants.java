@@ -3,8 +3,8 @@ package com.anbillon.lunarlite.app;
 /**
  * All constans used in this app.
  *
- * @author Vincent Cheung
+ * @author Vincent Cheung (coolingfall@gmail.com)
  */
-public class Constants {
+public final class Constants {
 
 }
